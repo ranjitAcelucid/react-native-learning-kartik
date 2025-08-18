@@ -1,6 +1,7 @@
 {
   "expo": {
-    "name": "shelfie",
+    "scheme": "shelfie",
+    "name": "kartik",
     "slug": "shelfie",
     "version": "1.0.0",
     "orientation": "portrait",
