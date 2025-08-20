@@ -7,5 +7,3 @@ export const client = new Client()
 
 export const account = new Account(client)
 export const avatars = new Avatars(client)
-
-// export { account };

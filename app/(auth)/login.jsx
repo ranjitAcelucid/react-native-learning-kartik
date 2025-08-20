@@ -14,15 +14,17 @@ import ThemedTextInput from '../../components/ThemedTextInput';
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState(null)
 
   const { login } = useUser()
 
   const handleSubmit = async () => {
+    setError(null)
     // Handle login logic here
     try {
       await login(email, password)
     } catch (error) {
-
+      setError(error.message)
     }
     // console.log('current user value:', user)
     // console.log("Login button pressed: ", email, password);
@@ -57,6 +59,9 @@ const Login = () => {
       <ThemedButton onPress={handleSubmit}>
         <Text style={{color: "#f2f2f2"}}>Login</Text>
       </ThemedButton>
+
+      <Spacer />
+       {error && <Text style={styles.error}>{error}</Text>}
 
       {/* <Pressable 
         onPress={handleSubmit}
@@ -97,5 +102,14 @@ const styles = StyleSheet.create({
     },
     pressed: {
       opacity: 0.8
+    },
+    error: {
+      color: colors.warning,
+      padding: 10,
+      backgroundColor: '#f5c1c8',
+      borderColor: colors.warning,
+      borderWidth: 1,
+      borderRadius: 6,
+      marginHorizontal: 10,
     }
 })
